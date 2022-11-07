@@ -16,6 +16,6 @@ jobs:
         key: ${{ secrets.PRIVATE_KEY }}
         port: 22
         script:
-          cd ~projet/demo1/flor
+          cd ~projets/demo1/flor
           pwd
           touch florent.txt
