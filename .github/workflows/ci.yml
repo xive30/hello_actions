@@ -16,7 +16,7 @@ jobs:
         key: ${{ secrets.PRIVATE_KEY }}
         port: 22
         script: |
-          cd ~/projets/demo1/flor/hello_actions
+          cd ~/hello_actions
           pwd
           git pull origin main
           git status
