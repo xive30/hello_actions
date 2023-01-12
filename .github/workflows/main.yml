@@ -29,3 +29,17 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/clockbox:latest
+      - 
+        name: Deploy using ssh
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER_NAME }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          port: 22
+          script: |
+              docker stop florentdocker
+              docker rm florentdocker
+              docker rmi $(docker images | grep 'clockbox')
+              echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+              docker run -dp 3000:3000 --name="florentdocker" -e 'id=${{ secrets.MOT }}' ${{ secrets.DOCKERHUB_USERNAME }}/clockbox:latest

@@ -2,8 +2,8 @@
 FROM node:18-alpine
 
 #directory à utiliser pour copier les sources
-WORKDIR /
-COPY ./ ./
+WORKDIR /projet/hello_actions
+COPY ./ /projet/hello_actions
 
 #on affiche le contenu du directory pour contrôle
 RUN ls -a
