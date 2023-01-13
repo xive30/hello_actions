@@ -15,7 +15,7 @@ RUN npm install
 RUN npm run build
 
 #on ouvre un port sur le docker
-EXPOSE 3000
+EXPOSE 3001
 
 #on lance la commande npm run start qui devient la commande par defaut du conteneur
 CMD [ "npm", "run", "start" ]
